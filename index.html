@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Homework 3</title>
+  </head>
+  <body>
+    <section class="converter mt-5" id="converter">
+        <div class="container">
+            <form class="text-center border border-light p-5">
+            <h3 class="text-center mb-5">Temperature Convertion</h3>     
+            <div class= "row">    
+                <div class="col-5">
+                    <select class="form-select" id="from">
+                        <option value="celcius">Celcius</option>
+                        <option value="reamur">Reamur</option>
+                        <option value="fahrenheit">Fahreinheit</option>
+                    </select>
+                </div>
+                <div class="col-2 text-center">to</div>
+                <div class="col-5"> 
+                    <select class="form-select" id="to">
+                        <option value="celcius">Celcius</option>
+                        <option value="reamur">Reamur</option>
+                        <option value="fahrenheit">Fahreinheit</option>
+                    </select>
+                </div>
+            <div class="row mt-5">
+                <div class="container">
+                <div class="col-12">
+                    <input type="number" class="form-control" id="question"/>
+                </div>
+                <div class="col-12 mt-2 mb-2 text-center">=</div>
+                <div class="col-12">
+                    <input type="number" class="form-control" id="result" disable/>
+                </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </section>
+    <section class="color mt-5" id="color">
+        <div class="container">
+            <h5 class="mb-2">Change Background Color</h5>   
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="color-input" placeholder="insert color" >
+                        <button class="input-group-text" id="btn-color">enter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script  src="./Converter.js"></script>
+  </body>
+  <script>
+      //import Converter from "./Converter.js";
+//const Converter = require("./Converter.js");
+const from = document.getElementById("from");
+const to = document.getElementById("to");
+const question = document.getElementById("question");
+const result = document.getElementById("result");
+
+from.addEventListener("change", function () {
+  from.value;
+  to.value;
+});
+
+to.addEventListener("change", function () {
+  from.value;
+  to.value;
+});
+
+question.addEventListener("keyup", function () {
+  if (to.value === "celcius") {
+    const nilai = converter.toCelcius(from.value, question.value);
+    return (result.value = nilai);
+  } else if (to.value === "reamur") {
+    const nilai = converter.toReamur(from.value, question.value);
+    return (result.value = nilai);
+  } else {
+    const nilai = converter.toFahreinheit(from.value, question.value);
+    return (result.value = nilai);
+  }
+});
+
+const converter = new Converter();
+
+//const a = converter.toReamur("Fahreinheit", 212);
+//const b = converter.toCelcius("reamur", 80);
+//const c = converter.toFahreinheit("celcius", 100);
+
+//console.log(a, b, c);
+
+const body = document.querySelector("body");
+
+const button = document.getElementById("btn-color");
+
+body.style.backgroundColor = "pink";
+
+button.addEventListener("click", function () {
+  const colorValue = document.getElementById("color-input").value;
+  body.style.background = colorValue;
+});
+
+  </script>
+</html>
